@@ -1,14 +1,8 @@
 #include<stdio.h>
-int main()
+void bubbleSort(int *x, int size)
 {
-int x[5];
-int y,e,f,g,m;
-for(y=0;y<=4;y++)
-{
-printf("Enter a number : ");
-scanf("%d",&x[y]);
-}
-m=3;
+int m,e,f,g;
+m=size-2;
 while(m>=0)
 {
 e=0;
@@ -26,6 +20,16 @@ f++;
 }
 m--;
 }
+}
+int main()
+{
+int x[5],y;
+for(y=0;y<=4;y++)
+{
+printf("Enter a number :");
+scanf("%d",&x[y]);
+}
+bubbleSort(x,5);
 for(y=0;y<=4;y++)
 {
 printf("%d\n",x[y]);
