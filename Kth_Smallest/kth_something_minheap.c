@@ -1,16 +1,16 @@
 #include<stdio.h>
 #include<stdlib.h>
-void heapSort(int *x,int lb,int ub)
+int kth_something(int *x,int lb,int ub,int k)
 {
-int y,ri,ci,lci,rci,g,swi;
+int y,ee,ci,pi,lci,rci,g,swi,ri;
 y=lb+1;
 while(y<=ub)
 {
 ci=y;
-while(ci>lb)
+while(ci>0)
 {
 ri=(ci-1)/2;
-if(x[ci]>x[ri])
+if(x[ci]<x[ri])
 {
 g=x[ci];
 x[ci]=x[ri];
@@ -25,10 +25,11 @@ break;
 y++;
 }
 y=ub;
-while(y>lb)
+ee=lb+1;
+while(ee<k)
 {
-g=x[lb];
-x[lb]=x[y];
+g=x[0];
+x[0]=x[y];
 x[y]=g;
 y--;
 ri=lb;
@@ -43,7 +44,7 @@ swi=lci;
 }
 else
 {
-if(x[lci]>x[rci])
+if(x[lci]<x[rci])
 {
 swi=lci;
 }
@@ -52,7 +53,7 @@ else
 swi=rci;
 }
 }
-if(x[swi]>x[ri])
+if(x[swi]<x[ri])
 {
 g=x[swi];
 x[swi]=x[ri];
@@ -64,28 +65,25 @@ else
 break;
 }
 }
+ee++;
 }
-}
-int kth_smallest(int *x,int size,int k)
-{
-heapSort(x,0,size-1);
-return x[k-1];
+return x[0];
 }
 int main()
 {
 int *x;
-int size,y,k;
+int y,req,k;
 printf("Enter your requirement :");
-scanf("%d",&size);
-x=(int*)malloc(sizeof(int)*size);
-for(y=0;y<size;y++)
+scanf("%d",&req);
+x=(int*)malloc(sizeof(int)*req);
+for(y=0;y<req;y++)
 {
 printf("Enter a number :");
 scanf("%d",&x[y]);
 }
-printf("Enter the value of k:");
+printf("Enter the value for k:");
 scanf("%d",&k);
-printf("Kth Smallest number is : %d \n",kth_smallest(x,size,k));
+printf("kth smallest number is : %d\n",kth_something(x,0,req-1,k));
 free(x);
 return 0;
 }
