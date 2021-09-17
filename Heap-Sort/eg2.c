@@ -1,20 +1,13 @@
-#include<stdio.h>
-int main()
+void heapSort(int *x,int lb,int ub)
 {
-int x[10],y,ri,ci,lci,rci,g,swi;
-y=0;
-while(y<=9)
-{
-printf("Enter a number :");
-scanf("%d",&x[y]);
-y++;
-}
+int y,ri,ci,lci,rci,g,swi;
+
 // Logic to convert the contents of array in heap
-y=1;
-while(y<=9)
+y=lb+1;
+while(y<=ub)
 {
 ci=y;
-while(ci>0)
+while(ci>lb)
 {
 ri=(ci-1)/2;
 if(x[ci]>x[ri])
@@ -33,14 +26,14 @@ y++;
 }
 
 // Logic to perform heap sort
-y=9;
-while(y>0)
+y=ub;
+while(y>lb)
 {
-g=x[0];
-x[0]=x[y];
+g=x[lb];
+x[lb]=x[y];
 x[y]=g;
 y--;
-ri=0;
+ri=lb;
 while(ri<y)
 {
 lci=(ri*2)+1;
@@ -74,8 +67,21 @@ break;
 }
 }
 }
+}
 
 
+#include<stdio.h>
+int main()
+{
+int x[10],y;
+y=0;
+while(y<=9)
+{
+printf("Enter a number :");
+scanf("%d",&x[y]);
+y++;
+}
+heapSort(x,0,9);
 for(y=0;y<=9;y++)
 {
 printf("%d\n",x[y]);
