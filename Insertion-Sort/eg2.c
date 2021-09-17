@@ -7,18 +7,10 @@ for(y=0;y<=9;y++)
 printf("Enter a number :");
 scanf("%d",&x[y]);
 }
-y=1;
-while(y<=9)
+for(y=1;y<=9;y++)
 {
-num=x[y];
-z=y-1;
-while(z>=0 && x[z]>num)
-{
-x[z+1]=x[z];
-z--;
-}
+for(num=x[y],z=y-1;z>=0 &&x[z]>num;z--) x[z+1]=x[z];
 x[z+1]=num;
-y++;
 }
 for(y=0;y<=9;y++)
 {
