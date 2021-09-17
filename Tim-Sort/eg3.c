@@ -9,10 +9,9 @@ for(num=x[y],z=y-1;z>=lb &&x[z]>num;z--) x[z+1]=x[z];
 x[z+1]=num;
 }
 }
-
 void merge(int *x,int lb1,int ub1,int lb2,int ub2)
 {
-int tmp[5000];
+int tmp[216];
 int lb3,ub3,i1,i2,i3;
 lb3=lb1;
 ub3=ub2;
@@ -54,11 +53,11 @@ i3++;
 }
 int main()
 {
+int x[216],y,chunkSize=16,totalRead=0,totalNumbers=216,num,mid,r,lb,ub;
 FILE *f;
-int x[5000],y,chunkSize=64,totalRead=0,totalNumbers=5000,num,mid,r,lb,ub;
-f=fopen("data.d","rb");
+f=fopen("data2.d","rb");
 y=0;
-while(y<5000)
+while(y<216)
 {
 fread(&num,sizeof(int),1,f);
 x[y]=num;
@@ -82,8 +81,8 @@ lb=ub+1;
 ub=ub+chunkSize;
 y++;
 }
-chunkSize=64;
-totalNumbers=5000;
+chunkSize=16;
+totalNumbers=216;
 while(chunkSize<totalNumbers)
 {
 lb=0;
@@ -110,6 +109,6 @@ lb=lb+(chunkSize*2);
 }
 chunkSize=chunkSize*2;
 }
-for(y=0;y<5000;y++) printf("%d\n",x[y]);
+for(y=0;y<216;y++) printf("%d\n",x[y]);
 return 0;
 }
